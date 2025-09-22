@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "./assets/VKA.png";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
 const links = [
@@ -60,7 +60,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden w-full bg-[#EFF2F9] border-t border-gray-200 shadow-md px-4 py-4">
           <div className="space-y-3">
-            {navList.map((link) => (
+            {links.map((link) => (
               <Link
                 to={link.to}
                 key={link.to}
