@@ -36,7 +36,10 @@ const Header = () => {
                   `px-2 py-1 hover:text-sky-600 ${isActive ? "text-sky-600" : "text-gray-900"}`
                 }
               >
-                {l.label}
+                <span className="text-black font-semibold hover:font-bold">
+                  {l.label}
+
+                </span>
               </NavLink>
             ))}
           </nav>
@@ -61,7 +64,7 @@ const Header = () => {
         <div className="md:hidden w-full bg-[#EFF2F9] border-t border-gray-200 shadow-md px-4 py-4">
           <div className="space-y-3">
             {links.map((link) => (
-              <Link
+              <NavLink
                 to={link.to}
                 key={link.to}
                 className="block hover:text-sky-600 transition"
@@ -70,7 +73,7 @@ const Header = () => {
                 <span className="text-black hover:font-bold font-semibold">
                   {link.label}
                 </span>
-              </Link>
+              </NavLink>
             ))}
           </div>
         </div>

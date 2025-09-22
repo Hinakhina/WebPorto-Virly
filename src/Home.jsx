@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Linkedin, Github, FileText, ChevronLeft, ChevronRight } from "lucide-react";
-import Header from './Header'
-import Footer from './Footer'
+import Header from './Header.jsx'
+import Footer from './Footer.jsx'
 // import next from './assets/next.png'
 // import prev from './assets/prev.png'
+
+import { NavLink, Link } from "react-router-dom";
 
 const projects = [
   {
@@ -48,9 +50,9 @@ const Home = () => {
   const p = projects[currentProject];
 
   return (
-    <div className='bg-[#EFF2F9] w-full min-h-screen overflow-x-hidden'>
+    <div>
       <Header />
-      <section className="bg-[#EFF2F9] py-12">
+      <section className="bg-[#EFF2F9] py-12 w-screen min-h-screen overflow-x-hidden">
         <div className="max-w-6xl mx-auto px-5">
           {/* Header */}
           <div className="relative mb-12 flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden rounded-3xl p-6 md:p-10 bg-gradient-to-b from-[#96B1DE] via-[#7692C4] to-[#6A739C]">
@@ -136,11 +138,11 @@ const Home = () => {
           <div>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-800">My Projects</h2>
-              <a href="#projects" className="">
-                <span className="text-black hover:font-semibold hover:underline">
-                  (see details)
-                </span>
-              </a>
+                <Link to="/project" className="">
+                  <span className="text-black hover:font-semibold hover:underline">
+                    (see details)
+                  </span>
+                </Link>
             </div>
 
             <div className="bg-white rounded-2xl p-6 shadow-sm">
