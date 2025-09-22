@@ -2,10 +2,13 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "./assets/VKA.png";
 
-const navList = [
-  { href: "#aboutme", label: "AboutMe" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contacts", label: "Contacts" },
+import { NavLink } from "react-router-dom";
+
+
+const links = [
+  { to: "/", label: "AboutMe" },
+  { to: "/project", label: "Projects" },
+  { to: "/contact", label: "ContactMe" },
 ];
 
 const Header = () => {
@@ -24,16 +27,17 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
-            {navList.map((link) => (
-              <a
-                href={link.href}
-                key={link.href}
-                className=""
+            {links.map(l => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === "/"} // so "/" isn't active on other routes
+                className={({ isActive }) =>
+                  `px-2 py-1 hover:text-sky-600 ${isActive ? "text-sky-600" : "text-gray-900"}`
+                }
               >
-                <span className="text-black hover:underline hover:font-bold transition font-semibold">
-                  {link.label}
-                </span>
-              </a>
+                {l.label}
+              </NavLink>
             ))}
           </nav>
 
@@ -57,16 +61,16 @@ const Header = () => {
         <div className="md:hidden w-full bg-[#EFF2F9] border-t border-gray-200 shadow-md px-4 py-4">
           <div className="space-y-3">
             {navList.map((link) => (
-              <a
-                href={link.href}
-                key={link.href}
+              <Link
+                to={link.to}
+                key={link.to}
                 className="block hover:text-sky-600 transition"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <span className="text-black hover:font-bold font-semibold">
                   {link.label}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

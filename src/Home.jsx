@@ -47,7 +47,7 @@ const Hero = () => {
 
   return (
     <section className="bg-[#EFF2F9] min-h-screen py-12">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-5">
         {/* Header */}
         <div className="relative mb-12 flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden rounded-3xl p-6 md:p-10 bg-gradient-to-b from-[#96B1DE] via-[#7692C4] to-[#6A739C]">
           <div className="text-white max-w-2xl">
@@ -75,7 +75,7 @@ const Hero = () => {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-6">Know Me More</h2>
           <div className="flex flex-wrap gap-10">
-            <div className="shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out">
+            <div className="shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out rounded-lg">
               <a
                 href="https://www.linkedin.com/"
                 target="_blank"
@@ -88,7 +88,7 @@ const Hero = () => {
                 </span>
               </a>
             </div>  
-            <div className="shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out">
+            <div className="shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out rounded-lg">
               <span
                 href="https://www.github.com/"
                 target="_blank"
@@ -101,26 +101,30 @@ const Hero = () => {
                 </span>
               </span>
             </div>
-            <a
-              href="https://itch.io/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#6A739C] px-5 py-2"
-            >
-              <Github size={18} className="text-white font-medium"/>
-              <span className="text-white">
-                Itch.io
-              </span>
-            </a>
-            <a
-              href="/Virly-CV.pdf"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#444444] px-5 py-2"
-            >
-              <FileText size={18} className="text-white"/>
-              <span className="font-medium text-white">
-                Curriculum Vitae
-              </span>
-            </a>
+            <div className="shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out rounded-lg">
+              <a
+                href="https://itch.io/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#6A739C] px-5 py-2"
+              >
+                <Github size={18} className="text-white font-medium"/>
+                <span className="text-white">
+                  Itch.io
+                </span>
+              </a>
+            </div>
+            <div className="shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out rounded-lg">
+              <a
+                href="/Virly-CV.pdf"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#444444] px-5 py-2"
+              >
+                <FileText size={18} className="text-white"/>
+                <span className="font-medium text-white">
+                  Curriculum Vitae
+                </span>
+              </a>
+            </div>
           </div>
         </div>
 
