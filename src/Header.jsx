@@ -6,9 +6,9 @@ import { NavLink, Link } from "react-router-dom";
 
 
 const links = [
-  { to: "/", label: "AboutMe" },
+  { to: "/", label: "About Me" },
   { to: "/project", label: "Projects" },
-  { to: "/contact", label: "ContactMe" },
+  { to: "/contact", label: "Contact Me" },
 ];
 
 const Header = () => {
@@ -27,18 +27,15 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-8">
-            {links.map(l => (
+            {links.map(link => (
               <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.to === "/"} // so "/" isn't active on other routes
-                className={({ isActive }) =>
-                  `px-2 py-1 hover:text-sky-600 ${isActive ? "text-sky-600" : "text-gray-900"}`
-                }
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"} // so "/" isn't active on other routes
               >
-                <span className="text-black font-semibold hover:font-bold">
-                  {l.label}
-
+                <span className="text-black font-semibold hover:text-[#7692C4] relative group">
+                  {link.label}
+                  <span className="absolute w-full h-[2px] left-0 -bottom-[5px] bg-[#7692C4] origin-center transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                 </span>
               </NavLink>
             ))}
@@ -50,9 +47,9 @@ const Header = () => {
               aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? (
-                <X className="text-white" />
+                <X className="text-black" />
               ) : (
-                <Menu className="text-white" />
+                <Menu className="text-black" />
               )}
             </button>
           </div>

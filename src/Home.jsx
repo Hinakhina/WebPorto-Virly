@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import { Link } from "react-router-dom";
-import ItchIoIcon from "./assets/itch-io.png"
 
+import ItchIoIcon from "./assets/itch-io.png"
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import CVIcon from "@mui/icons-material/Description";
@@ -20,7 +20,22 @@ import Willify from "./assets/Willify/Willify.png"
 
 const projects = [
   {
-    title: "NightMaze - 3D Horror Survival Game",
+    title: "Watchmen - 2D Shooting Game",
+    subtitle: "Game Programmer - Ren'Py/Python(.rpy)",
+    image: Watchmen,
+  },
+  {
+    title: "March Flower April Shower - Visual Novel Game",
+    subtitle: "Game Programmer - Ren'Py/Python(.rpy)",
+    image: MarchFlower,
+  },
+  {
+    title: "Tebak Gambar - Educational Game",
+    subtitle: "Game Developer - Unity/2D/C#",
+    image: TebakGambar,
+  },
+  {
+    title: "Night Maze - 3D Horror Survival Game",
     subtitle: "Game Developer - Unity/3D/C#",
     image: NightMaze,
   },
@@ -75,10 +90,10 @@ const Home = () => {
   const p = projects[currentProject];
 
   return (
-    <div>
+    <div className="bg-[#EFF2F9] min-h-screen overflow-x-hidden">
       <Header />
-      <section className="bg-[#EFF2F9] py-12 pr-3 w-screen min-h-screen overflow-x-hidden">
-        <div className="max-w-6xl mx-auto px-5">
+      <section className="py-12 px-5 md:pl-30 md:pr-33">
+        <div className="max-w-6xl mx-auto">
           {/* Header card */}
           <div className="relative mb-12 flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden rounded-3xl p-6 md:p-10 bg-gradient-to-b from-[#96B1DE] via-[#7692C4] to-[#6A739C]">
             <div className="text-white max-w-2xl">
@@ -86,9 +101,12 @@ const Home = () => {
                 Virly Karaniyametta Arista
               </h1>
               <p className="text-white">
-                Undergraduate CS student focusing on clean UI, smooth interactions,
-                and game programming. Experienced with React, Tailwind, Unity/C#, and
-                data visualization.
+                Computer Science undergraduate at Bina Nusantara University 
+                with a strong passion for game development and AI-driven software. 
+                Experiences include developing games with Unity and Godot, mentoring, 
+                and leading organizational projects, strengthening skills in teamwork. 
+                Committed to exploring while continuously refining expertise in coding through projects, 
+                aiming to contribute innovative and impactful digital solutions in collaborative environments.
               </p>
             </div>
 
@@ -107,7 +125,7 @@ const Home = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Know Me More</h2>
             <div className="flex flex-wrap gap-4">
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/virly-karaniyametta-arista-094919277/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-[#96B1DE] px-5 py-2 shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out"
@@ -117,7 +135,7 @@ const Home = () => {
               </a>
 
               <a
-                href="https://www.github.com/"
+                href="https://github.com/Hinakhina"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-[#7692C4] px-5 py-2 shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out"
@@ -127,7 +145,7 @@ const Home = () => {
               </a>
 
               <a
-                href="https://itch.io/"
+                href="https://akhina.itch.io/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-[#6A739C] px-5 py-2 shadow-md hover:shadow-xl transition-shadow duration-100 ease-in-out"
@@ -173,13 +191,20 @@ const Home = () => {
                   {/* Inner “photo” area with enforced aspect ratio */}
                   <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
                     <div className="relative w-full aspect-[16/8]">
-                      <img
-                        src={p.image}
-                        alt={p.title}
-                        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
-                        loading="lazy"
-                        key={p.image}
-                      />
+                      {/* Render all project images and control visibility with opacity */}
+                      {projects.map((project, index) => (
+                        <img
+                          key={project.image} // Use a unique key for each image
+                          src={project.image}
+                          alt={project.title}
+                          className={`
+                            absolute inset-0 h-full w-full object-cover
+                            transition-opacity duration-700 ease-in-out
+                            ${index === currentProject ? 'opacity-100' : 'opacity-0'}
+                          `}
+                          loading="lazy"
+                        />
+                      ))}
                     </div>
                   </div>
 
