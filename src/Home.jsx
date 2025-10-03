@@ -162,7 +162,7 @@ const Home = () => {
               </Link>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="bg-white rounded-2xl p-5 md:px-15 md:py-10 shadow-sm">
               <div
                 className="relative"
                 onMouseEnter={() => setIsPaused(true)}
@@ -172,7 +172,7 @@ const Home = () => {
                 <div className="relative rounded-2xl bg-[#6A739C] p-3 md:p-4 mb-6">
                   {/* Inner “photo” area with enforced aspect ratio */}
                   <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
-                    <div className="relative w-full aspect-[16/9]">
+                    <div className="relative w-full aspect-[16/8]">
                       <img
                         src={p.image}
                         alt={p.title}
