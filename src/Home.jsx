@@ -18,7 +18,16 @@ import TeaHaven from "./assets/TeaHaven/TeaHaven.png"
 import LitterFlipper from "./assets/LitterFlipper/LitterFlipper.png"
 import Willify from "./assets/Willify/Willify.png"
 
-const projects = [
+import Iccsci from "./assets/Certificates/ICCSCI Authors Certificate.png"
+import AgateCourse from "./assets/Certificates/AI Game Prog AGATE Academy Batch 7 Certificate.png"
+import PortJam from "./assets/Certificates/IGGI Portfolio Jam Certificate.png"
+import Readiness from "./assets/Certificates/Binus Professional Readiness Camp Certificate.png"
+import IbmClass from "./assets/Certificates/Sertifikat IBM Wave 4 Certificate.png"
+import IntroC from "./assets/Certificates/Intro to C Certificate.png"
+import Binar from "./assets/Certificates/Business Intelligence Bina 101 Caertificate.png"
+import Ilpc from "./assets/Certificates/ILPC Participant Certificate.png"
+
+const ProjectsList = [
   {
     title: "Watchmen - 2D Shooting Game",
     subtitle: "Game Programmer - Ren'Py/Python(.rpy)",
@@ -56,38 +65,97 @@ const projects = [
   },
 ];
 
-const Home = () => {
-  const [currentProject, setCurrentProject] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+const CertificatesList = [
+  {
+    title: "Vision-Based Hand Gesture Recognition as an Accessible Alternative to Conventional Game Input for Players with Disabilities",
+    subtitle: "Research Paper's Author - ICCSCI 2025 - Conference Presentation",
+    image: Iccsci,
+  },
+  {
+    title: "Watchmen Development - 2D Shooting Game",
+    subtitle: "Portfolio Jam - Indie Games Group Indonesia",
+    image: PortJam,
+  },
+  {
+    title: "\"Night Maze\" Development - 3D Horror Survival Game",
+    subtitle: "AI Game Programming Course - AGATE Academy Batch 7",
+    image: AgateCourse,
+  },
+  {
+    title: "Program - Professional Readiness Camp",
+    subtitle: "Binus University",
+    image: Readiness,
+  },
+  {
+    title: "Class - Code Generation and Optimization Class",
+    subtitle: "IBM class Wave 4 - Student Developer Initiative - Hacktiv8",
+    image: IbmClass,
+  },
+  {
+    title: "Competition - ILPC's Participant",
+    subtitle: "Informatics Logical Programming Competition 2023",
+    image: Ilpc,
+  },
+  {
+    title: "Class - Basic Programming in C",
+    subtitle: "Binus University 2022",
+    image: IntroC,
+  },
+  {
+    title: "Webinar - Business Intellligence 101: The Power of Insight",
+    subtitle: "Binar101 - Binar",
+    image: Binar,
+  },
+];
+
+function useCarousel(list, autoPlay = true, delay = 2000) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const autoplayRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const nextProject = useCallback(
-    () => setCurrentProject((p) => (p + 1) % projects.length),
-    []
-  );
-  const prevProject = useCallback(
-    () => setCurrentProject((p) => (p - 1 + projects.length) % projects.length),
-    []
-  );
-  const goTo = useCallback((idx) => setCurrentProject(idx), []);
+  const next = useCallback(() => {
+    setCurrentIndex((i) => (i + 1) % list.length);
+  }, [list]);
 
-  // Keyboard ← / → navigation
+  const prev = useCallback(() => {
+    setCurrentIndex((i) => (i - 1 + list.length) % list.length);
+  }, [list]);
+
+  const goTo = useCallback((idx) => setCurrentIndex(idx), []);
+
+  // Autoplay
+  useEffect(() => {
+    if (!autoPlay || isPaused) return;
+    autoplayRef.current = setInterval(next, delay);
+    return () => clearInterval(autoplayRef.current);
+  }, [autoPlay, delay, isPaused, next]);
+
+  // Keyboard navigation
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowRight") nextProject();
-      if (e.key === "ArrowLeft") prevProject();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [nextProject, prevProject]);
+  }, [next, prev]);
 
-  useEffect(() => {
-    if (isPaused) return;
-    autoplayRef.current = setInterval(nextProject, 2000);
-    return () => clearInterval(autoplayRef.current);
-  }, [isPaused, nextProject]);
+  return {
+    item: list[currentIndex],
+    index: currentIndex,
+    next,
+    prev,
+    goTo,
+    setIsPaused,
+  };
+}
 
-  const p = projects[currentProject];
+const Home = () => {
+  const projectCarousel = useCarousel(ProjectsList);
+  const certCarousel = useCarousel(CertificatesList, false); // no autoplay
+
+  const projects = projectCarousel.item;
+  const certificates = certCarousel.item;
 
   return (
     <div className="bg-[#EFF2F9] min-h-screen overflow-x-hidden">
@@ -169,8 +237,8 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Projects */}
-          <div>
+          {/* Projects Section */}
+          <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-800">My Projects</h2>
               <Link to="/project">
@@ -180,78 +248,117 @@ const Home = () => {
               </Link>
             </div>
 
-            <div className="bg-white rounded-2xl p-5 md:px-15 md:py-10 shadow-sm">
-              <div
-                className="relative"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-              >
-                {/* FRAME */}
-                <div className="relative rounded-2xl bg-[#6A739C] p-3 md:p-4 mb-6">
-                  {/* Inner “photo” area with enforced aspect ratio */}
-                  <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
-                    <div className="relative w-full aspect-[16/8]">
-                      {/* Render all project images and control visibility with opacity */}
-                      {projects.map((project, index) => (
-                        <img
-                          key={project.image} // Use a unique key for each image
-                          src={project.image}
-                          alt={project.title}
-                          className={`
-                            absolute inset-0 h-full w-full object-cover
-                            transition-opacity duration-700 ease-in-out
-                            ${index === currentProject ? 'opacity-100' : 'opacity-0'}
-                          `}
-                          loading="lazy"
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Prev / Next */}
-                  <button
-                    onClick={prevProject}
-                    aria-label="Previous project"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-white p-3 rounded-lg transition-colors hover:bg-white/10"
-                  >
-                    <ChevronLeftIcon fontSize="medium" />
-                  </button>
-                  <button
-                    onClick={nextProject}
-                    aria-label="Next project"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-white p-3 rounded-lg transition-colors hover:bg-white/10"
-                  >
-                    <ChevronRightIcon fontSize="medium" />
-                  </button>
-                </div>
-
-                {/* Title + indicators */}
-                <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-800">{p.title}</h3>
-                  <p className="text-gray-500">{p.subtitle}</p>
-
-                  {/* Dots */}
-                  <div className="mt-4 flex items-center justify-center gap-2">
-                    {projects.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => goTo(i)}
-                        aria-label={`Go to slide ${i + 1}`}
-                        className={`h-2.5 w-2.5 rounded-full transition-all ${
-                          i === currentProject
-                            ? "bg-[#6A739C] w-6"
-                            : "bg-gray-300 hover:bg-gray-400"
-                        }`}
+            <div
+              className="bg-white rounded-2xl p-5 md:px-15 md:py-10 shadow-sm relative"
+              onMouseEnter={() => projectCarousel.setIsPaused(true)}
+              onMouseLeave={() => projectCarousel.setIsPaused(false)}
+            >
+              {/* Image */}
+              <div className="rounded-2xl bg-[#6A739C] p-3 md:p-4 mb-6 relative">
+                <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
+                  <div className="relative w-full aspect-[16/8]">
+                    {ProjectsList.map((project, index) => (
+                      <img
+                        key={project.image}
+                        src={project.image}
+                        alt={project.title}
+                        className={`
+                          absolute inset-0 h-full w-full object-cover
+                          transition-opacity duration-700 ease-in-out
+                          ${index === projectCarousel.index ? "opacity-100" : "opacity-0"}
+                        `}
+                        loading="lazy"
                       />
                     ))}
                   </div>
                 </div>
+                {/* Buttons */}
+                <button
+                  onClick={projectCarousel.prev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-white p-3 rounded-lg hover:bg-white/10"
+                >
+                  <ChevronLeftIcon fontSize="medium" />
+                </button>
+                <button
+                  onClick={projectCarousel.next}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white p-3 rounded-lg hover:bg-white/10"
+                >
+                  <ChevronRightIcon fontSize="medium" />
+                </button>
+              </div>
+
+              {/* Info */}
+              <div className="text-center">
+                <h3 className="text-xl font-bold transition text-gray-800">{projects.title}</h3>
+                <p className="text-gray-500">{projects.subtitle}</p>
+
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  {ProjectsList.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => projectCarousel.goTo(i)}
+                      className={`h-2.5 w-2.5 rounded-full transition-all ${
+                        i === projectCarousel.index
+                          ? "bg-[#6A739C] w-6"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
 
-            <p className="mt-4 text-center text-sm text-gray-500">
-              Tip: use ← / → keys to navigate projects. Hover to pause autoplay.
-            </p>
+          {/* Certificates Section */}
+          <div className="mb-15">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              Certificates
+            </h2>
+
+            <div className="bg-white rounded-2xl p-5 md:px-15 md:py-10 shadow-sm relative">
+              <div className="rounded-2xl bg-[#6A739C] p-3 md:p-4 mb-6 relative">
+                <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
+                  <div className="relative w-full flex justify-center">
+                    <img
+                      src={certificates.image}
+                      alt={certificates.title}
+                      className="rounded-xl h-auto max-w-full object-cover transition-opacity duration-500"
+                    />
+                  </div>
+                </div>
+                <button
+                  onClick={certCarousel.prev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-white p-3 rounded-lg hover:bg-white/10"
+                >
+                  <ChevronLeftIcon fontSize="medium" />
+                </button>
+                <button
+                  onClick={certCarousel.next}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white p-3 rounded-lg hover:bg-white/10"
+                >
+                  <ChevronRightIcon fontSize="medium" />
+                </button>
+              </div>
+
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-gray-800">{certificates.title}</h3>
+                <p className="text-gray-500">{certificates.subtitle}</p>
+
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  {CertificatesList.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => certCarousel.goTo(i)}
+                      className={`h-2.5 w-2.5 rounded-full transition-all ${
+                        i === certCarousel.index
+                          ? "bg-[#6A739C] w-6"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
