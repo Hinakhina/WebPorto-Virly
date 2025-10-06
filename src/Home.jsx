@@ -152,7 +152,7 @@ function useCarousel(list, autoPlay = true, delay = 2000) {
 
 const Home = () => {
   const projectCarousel = useCarousel(ProjectsList);
-  const certCarousel = useCarousel(CertificatesList, false); // no autoplay
+  const certCarousel = useCarousel(CertificatesList); // no autoplay
 
   const projects = projectCarousel.item;
   const certificates = certCarousel.item;
