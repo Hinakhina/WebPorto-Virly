@@ -13,17 +13,17 @@ import Willify from "./assets/Willify/Willify.png";
 const projects = [
     {
         title: "Watchmen - 2D Shooting Game",
-        text: "“Watchman” is a survival-action shooter built with Godot (GDScript) during a one-month Portfolio Jam in a 5 members team hosted by Indie Games Group Indonesia. As one of two programmers, I implemented the UI/UX flow, HUD, narrative setup, audio integration, and some of the core gameplay systems, including player controller, shooting mechanics, item pickups, currency systems, and scoring systems. Task and timeline management was conducted in Notion, and collaborative coding was managed through GitHub, enabling efficient progress tracking and stable builds under tight deadlines.",
+        text: "Watchmen is a survival-action shooter built with Godot (GDScript) during a one-month Portfolio Jam in a 5 members team hosted by Indie Games Group Indonesia. As one of two programmers, I implemented the UI/UX flow, HUD, narrative setup, audio integration, and some of the core gameplay systems, including player controller, shooting mechanics, item pickups, currency systems, and scoring systems. Task and timeline management was conducted in Notion, and collaborative coding was managed through GitHub, enabling efficient progress tracking and stable builds under tight deadlines.",
         image: Watchmen,
     },
     {
         title: "March Flower April Shower - Visual Novel Game",
-        text: "“March Flowers, April Showers: You Were Gone by the Summer's” is a cozy visual novel developed using Ren’Py as part of my university Software Engineering Course’s final project. This project is a mandatory group project, where i worked as the game programmer and my teammates handled the others. As the game programmer, I implemented the story and asset flows created by my teammates using Ren’Py’s scripting features. This was my first experience with Ren’Py, so I had to study and understand its tools while working within deadline. We used Scrum methodology, GitHub, and Notion to manage tasks and ensure everyone stayed on track.",
+        text: "“March Flowers, April Showers: You Were Gone by the Summer's” is a cozy visual novel developed using Ren’Py as part of my university Software Engineering Course’s final project. This project is a mandatory group project, where i worked as the game programmer and my teammates handled the others. As the game programmer, I implemented the story and asset flows created by my teammates using Ren'Py's scripting features. This was my first experience with Ren'Py, so I had to study and understand its tools while working within deadline. We used Scrum methodology, GitHub, and Notion to manage tasks and ensure everyone stayed on track.",
         image: MarchFlower,
     },
     {
-        title: "Tebak Gambar - Educational Game",
-        text: "Game Developer - Unity/2D/C#",
+        title: "Tebak Gambar & Hand Gesture Recognition System - Educational Game",
+        text: "Tebak Gambar is a quick image-guessing game in bahasa Indonesia where players choose the right picture based on the name shown. This game is developed in one day by using unity, as an experiment for integrating alternative input systems. I handled the game logic programming and UI programming, also added virtual keyboard input support, allowing the game to work with tools like PyAutoGUI and hand gesture recognition systems—not just standard keyboard or mouse input (DOM's event input).",
         image: TebakGambar,
     },
     {
@@ -38,12 +38,12 @@ const projects = [
     },
     {
         title: "Litter Flipper - 2D Cleanup Game",
-        text: "Game Programmer - Unity/2D/C#",
+        text: "Litter Flipper is a 2D game where players help a penguin clean the ocean by sorting trash, rescuing fish, and avoiding polluters. This group project was created to raise awareness about environmental issues through gameplay during club activities (self initiated to join). I contributed as the game programmer along with my partner. I responsible for UI/UX, score system, sprite animations, and scene transitions, while my partner responsible for the player mechanics. We utilized GitHub for version control to ensure project tracking and collaboration. Throughout the process, I learned how to solve implementation challenges using Unity’s and manage tasks in a team to avoid conflict while aligning the mechanics with the game's concept.",
         image: LitterFlipper,
     },
     {
         title: "Willify - Music Platform",
-        text: "Front End Developer - HTML/CSS/JS",
+        text: "Willify is a mandatory individual project for university Human-Computer Interaction course, where I worked as UI/UX designer and Front end. I designed and developed a music streaming front-end similar to Spotify, started by creating a mockup in Figma to visualize the UI, then followed by implementing the design using only vanilla HTML, CSS, and JavaScript. The challenge was to ensure consistent user experience without relying on frameworks, so i can apply core frontend principles and pay close attention to interface usability and responsiveness.",
         image: Willify,
     },
 ];

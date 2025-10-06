@@ -169,12 +169,13 @@ const Home = () => {
                 Virly Karaniyametta Arista
               </h1>
               <p className="text-white">
-                Computer Science undergraduate at Bina Nusantara University 
-                with a strong passion for game development and AI-driven software. 
-                Experiences include developing games with Unity and Godot, mentoring, 
-                and leading organizational projects, strengthening skills in teamwork. 
-                Committed to exploring while continuously refining expertise in coding through projects, 
-                aiming to contribute innovative and impactful digital solutions in collaborative environments.
+                I am a Computer Science undergraduate student at Bina Nusantara University with 
+                a strong passion in programming, particularly in game development, AI-driven software, and front-end develoopment. 
+                I've actively explored various areas of software development to sharpen my technical skills and 
+                problem-solving mindset. I've developed several games and interactive projects using Unity, Ren'Py, Godot, React.js, and other web technologies. 
+                Beyond technical skills, I actively engage in organizational work and collaborative environments, developing a balance of leadership, 
+                communication, and project coordination. I strive to create meaningful digital experiences 
+                while continuously growing through hands-on practice and teamwork.
               </p>
             </div>
 
