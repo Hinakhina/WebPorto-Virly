@@ -165,9 +165,9 @@ const Home = () => {
           {/* Header card */}
           <div className="relative mb-12 flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden rounded-3xl p-6 md:p-10 bg-gradient-to-b from-[#96B1DE] via-[#7692C4] to-[#6A739C]">
             <div className="text-white max-w-2xl">
-              <h1 className="text-medium md:text-4xl font-bold mb-4">
+              <p className="text-4xl md:text-5xl font-bold mb-4">
                 Virly Karaniyametta Arista
-              </h1>
+              </p>
               <p className="text-white">
                 I am a Computer Science undergraduate student at Bina Nusantara University with 
                 a strong passion in programming, particularly in game development, AI-driven software, and front-end develoopment. 
