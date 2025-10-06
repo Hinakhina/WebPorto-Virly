@@ -27,8 +27,6 @@ import IntroC from "./assets/Certificates/Intro to C Certificate.png"
 import Binar from "./assets/Certificates/Business Intelligence Bina 101 Caertificate.png"
 import Ilpc from "./assets/Certificates/ILPC Participant Certificate.png"
 
-import VirlyPortfolio from '../public/VirlyKaraniyamettaArista_CV_ATS.pdf'
-
 const ProjectsList = [
   {
     title: "Watchmen - 2D Shooting Game",
