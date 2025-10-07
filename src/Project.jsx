@@ -195,7 +195,7 @@ const Project = () => {
                         <div className="px-5 pb-5 md:px-7 mb:pb-7">
                                 <div className="relative w-full aspect-[16/8] rounded-2xl overflow-hidden bg-gray-50 ring-1 ring-black/5 mb-5">
                                     {gallery.map((src, i) => (
-                                        <img src={src} alt={selectedProject.title} className={`rounded-2xl absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${ i === slideIdx ? "opacity-100" : "opacity-0"}`} loading="lazy"/>
+                                        <img key={i} src={src} alt={selectedProject.title} className={`rounded-2xl absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${ i === slideIdx ? "opacity-100" : "opacity-0"}`} loading="eager" fetchPriority="high"/>
                                     ))}
                                 </div>
                             <h2 className="text-2xl font-bold mb-2">{selectedProject.title}</h2>
