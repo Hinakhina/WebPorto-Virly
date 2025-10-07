@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "./assets/VKA.png";
 
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const links = [
@@ -15,7 +15,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-[#EFF2F9] shadow-md">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#EFF2F9] shadow-md">
       <div className="relative mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center h-full">
@@ -31,12 +31,27 @@ const Header = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
-                end={link.to === "/"} // so "/" isn't active on other routes
+                end={link.to === "/"} 
+                className={({ isActive }) =>
+                  [
+                    "relative group font-semibold transition-colors",
+                    isActive ? "text-[#7692C4]" : "text-black hover:text-[#7692C4]",
+                  ].join(" ")
+                }
               >
-                <span className="text-black font-semibold hover:text-[#7692C4] relative group">
-                  {link.label}
-                  <span className="absolute w-full h-[2px] left-0 -bottom-[5px] bg-[#7692C4] origin-center transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
-                </span>
+                {({ isActive }) => (
+                  <>
+                    {link.label}
+                    {/* underline */}
+                    <span
+                      className={[
+                        "pointer-events-none absolute left-0 -bottom-[5px] h-[2px] w-full bg-[#7692C4] origin-center transform transition-transform duration-300",
+                        isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                      ].join(" ")}
+                    />
+                  </>
+                )}
+
               </NavLink>
             ))}
           </nav>

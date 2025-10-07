@@ -1,6 +1,7 @@
 import React from 'react'
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import EmailIcon from "@mui/icons-material/Email";
 import ItchIoIcon from "./assets/itch-io.png"
 import ItchIoBlack from "./assets/itch-io-black.png"
 
@@ -8,14 +9,14 @@ const Footer = () => {
     return (
         <div className='bg-[#DADEEA]'>
             <footer className="mt-24">
-                <div className="container mx-auto px-4 py-10 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="container mx-auto px-4 py-10 text-sm flex flex-col items-center justify-between gap-4">
                     {/* Copyright */}
                     <p className="opacity-80">
                         Made by Virly Karaniyametta Arista
                     </p>
 
                     {/* Social Links */}
-                    <div className="flex items-center gap-6">
+                    <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
                         <a href="https://www.linkedin.com/in/virly-karaniyametta-arista-094919277/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
                             <LinkedInIcon fontSize="small" />
                             <span className="text-sm">
@@ -35,6 +36,10 @@ const Footer = () => {
                             <span className="text-sm group-hover:text-white">
                                 akhina.itch.io
                             </span>
+                        </a>
+                        <a href="mailto:virly.k.arista@gmail.com" className="group flex items-center gap-2 hover:text-white transition-colors">
+                            <EmailIcon fontSize="small" />
+                            <span className="text-sm">virly.k.arista@gmail.com</span>
                         </a>
                     </div>
 

@@ -3,6 +3,8 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import { Link } from "react-router-dom";
 
+import Profile from './assets/profile-virly.png'
+
 import ItchIoIcon from "./assets/itch-io.png"
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -13,6 +15,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Watchmen from "./assets/Watchmen/Watchmen.jpg"
 import MarchFlower from "./assets/MarchFlowerAprilShower/MarchFlowersAprilShower.png"
 import TebakGambar from "./assets/TebakGambar/TebakGambar.png"
+import WebtoonRecommendationSystem from "./assets/WebtoonRecommendationSystem/WebtoonRecommendationSystem1.png"
 import NightMaze from "./assets/NightMaze/NightMaze.png"
 import TeaHaven from "./assets/TeaHaven/TeaHaven.png"
 import LitterFlipper from "./assets/LitterFlipper/LitterFlipper.png"
@@ -42,6 +45,11 @@ const ProjectsList = [
     title: "Tebak Gambar - Educational Game",
     subtitle: "Game Developer - Unity/2D/C#",
     image: TebakGambar,
+  },
+  {
+    title: "Webtoon Recommendation System - Machine Learning Project",
+    subtitle: "Web Developer - Next.js/MySQL/Python",
+    image: WebtoonRecommendationSystem,
   },
   {
     title: "Night Maze - 3D Horror Survival Game",
@@ -160,7 +168,7 @@ const Home = () => {
   return (
     <div className="bg-[#EFF2F9] min-h-screen overflow-x-hidden">
       <Header />
-      <section className="py-12 px-5 md:pl-30 md:pr-33">
+      <section className="mt-12 py-12 px-5 md:pl-30 md:pr-33">
         <div className="max-w-6xl mx-auto">
           {/* Header card */}
           <div className="relative mb-12 flex flex-col md:flex-row items-start md:items-center justify-between overflow-hidden rounded-3xl p-6 md:p-10 bg-gradient-to-b from-[#96B1DE] via-[#7692C4] to-[#6A739C]">
@@ -179,11 +187,11 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="mt-6 md:mt-0 md:ml-8 shrink-0">
+            <div className="mt-6 md:mt-0 md:ml-8">
               <img
-                src="/images/profile.jpg"
+                src={Profile}
                 alt="Virly Karaniyametta Arista"
-                className="w-40 h-40 md:w-48 md:h-48 rounded-xl object-cover ring-2 ring-white/30 shadow-lg"
+                className="w-40 h-40 md:w-80 md:h-80 rounded-xl object-cover ring-2 ring-white/30 shadow-lg"
                 loading="lazy"
               />
             </div>
@@ -256,23 +264,25 @@ const Home = () => {
             >
               {/* Image */}
               <div className="rounded-2xl bg-[#6A739C] p-3 md:p-4 mb-6 relative">
-                <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
-                  <div className="relative w-full aspect-[16/8]">
-                    {ProjectsList.map((project, index) => (
-                      <img
-                        key={project.image}
-                        src={project.image}
-                        alt={project.title}
-                        className={`
-                          absolute inset-0 h-full w-full object-cover
-                          transition-opacity duration-700 ease-in-out
-                          ${index === projectCarousel.index ? "opacity-100" : "opacity-0"}
-                        `}
-                        loading="lazy"
-                      />
-                    ))}
+                  <div className="relative mx-auto w-full md:w-[80%] lg:w-[65%] rounded-xl overflow-hidden bg-white/10 ring-1 ring-white/30 shadow-lg">
+                    <div className="relative w-full aspect-[16/8]">
+                      {ProjectsList.map((project, index) => (
+                        <Link to="/project">
+                          <img
+                            key={project.image}
+                            src={project.image}
+                            alt={project.title}
+                            className={`
+                              absolute inset-0 h-full w-full object-cover
+                              transition-opacity duration-700 ease-in-out
+                              ${index === projectCarousel.index ? "opacity-100" : "opacity-0"}
+                              `}
+                              loading="lazy"
+                              />
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
                 {/* Buttons */}
                 <button
                   onClick={projectCarousel.prev}
